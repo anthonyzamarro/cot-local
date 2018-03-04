@@ -1,11 +1,11 @@
 const btn = document.getElementById('search-button');
 const list = document.getElementById('list');
 
-// const tagEndpoint = "http://52.11.188.162/tag";
-// const authorEndpoint = "http://52.11.188.162/author";
-// const editorEndpoint = "http://52.11.188.162/editor";
-// const licenseEndpoint = "http://52.11.188.162/licenses";
-// const reviewEndpoint = "http://52.11.188.162/review";
+const tagEndpoint = "https://52.11.188.162/tag";
+const authorEndpoint = "https://52.11.188.162/author";
+const editorEndpoint = "https://52.11.188.162/editor";
+const licenseEndpoint = "https://52.11.188.162/licenses";
+const reviewEndpoint = "https://52.11.188.162/review";
 const resourcesEndpoint = "https://52.11.188.162/resources";
 
 function init() {
