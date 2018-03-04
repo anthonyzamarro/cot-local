@@ -1,7 +1,7 @@
 const btn = document.getElementById('search-button');
 const list = document.getElementById('list');
 
-const tagEndpoint = "https://52.11.188.162/tag";
+const tagEndpoint = "http://52.11.188.162/tag";
 const authorEndpoint = "https://52.11.188.162/author";
 const editorEndpoint = "https://52.11.188.162/editor";
 const licenseEndpoint = "https://52.11.188.162/licenses";
