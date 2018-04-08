@@ -5,7 +5,7 @@
 .container {
   display: grid;
   grid-template-columns: 20% 60% 20%;
-  grid-template-rows: 75px 350px 50px auto;
+  grid-template-rows: 75px 350px 50px 50px auto;
 }
 img {
   grid-column-start: 2;
@@ -19,7 +19,7 @@ img {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-  /*margin: 0 auto;*/
+  margin: 0 auto;
   padding-left: 7%;
   color: var(--blue);
 }
@@ -57,7 +57,7 @@ img {
   width: 60%;
   background: #F5F5F5;
 }
-.license-ancillaries, .reviews-respository {
+.license-ancillaries-container, .reviews-respository {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -70,14 +70,17 @@ img {
   color: var(--blue);
   font-weight: 700;
 }
-#search-button {
+.button-container {
   grid-column-start: 2;
   grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 3;
-  width: 75px;
+  grid-row-start: 4;
+  grid-row-end: 4;
   height: 30px;
-  margin: 0 auto;
+  display: inline-flex;
+  justify-content: space-between;
+  margin: 1em 30%;
+}
+#search-button {
   color: #ffffff;
   font-size: 16px;
   background: var(--orange);

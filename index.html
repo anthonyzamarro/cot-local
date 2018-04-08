@@ -8,14 +8,13 @@
   <body>
     <div class="container">
       <div class="top-row">
-        <!-- <img src="file:///Users/anthonyzamarro/Downloads/book.svg" alt=""> -->
           <h1 id="cot-title">
             College Open Textbooks
             <br>
             <span>Driving Awareness and Adoption of Open Textbooks</span>
          </h1>
       </div>
-    <div id="search-fields">
+    <form id="search-fields">
       <div class="search-field">
         <label for="discipline">Discipline:</label>
         <select name="discipline" id="discipline" multiple="multiple">
@@ -24,30 +23,45 @@
       <br>
       <div class="search-field">
         <label for="title">Title:</label>
-        <input id="title" type="text" name="title">
+        <input id="title" type="text" name="title" placeholder="title of text">
       </div>
       <br>
       <div class="search-field">
         <label for="author">Author/Editor:</label>
-        <input id="author-name" type="text" name="name">
+        <input id="author-name" type="text" name="name" placeholder="authors or editors">
       </div>
       <br>
-      <div class="license-ancillaries">
+      <div class="license-ancillaries-container">
         <div class="search-field">
           <label for="license">License:</label>
-          <select name="license" id="license"></select>
+          <br>
+          <br>
+            <input type="text" name="license" id="license-search" placeholder="specify license">
+            <br>
+            <br>
+            <select name="license" id="license-select"></select>
         </div>
         <br>
         <div class="search-field">
-          <label for="ancillaries">Ancillaries:</label>
-          <input id="ancillaries" type="text" name="ancillaries">
+          <label for="ancillaries">Ancillaries: </label>
+          <!-- <br> -->
+          <select>
+            <option value="none" class="select ancilliary-select">None</option>
+            <option value="yes" class="select ancilliary-select">Yes</option>
+            <option value="no" class="select ancilliary-select">No</option>
+          </select>
         </div>
         <br>
       </div>
       <div class="reviews-respository">
         <div class="search-field">
-          <label for="reviews">Peer Reviewed:</label>
-          <input id="peer-reviewed" type="text" name="peer-reviewed">
+          <label for="reviews">Peer Reviewed: </label>
+          <!-- <br> -->
+          <select>
+            <option value="none" class="select peer-review-select">None</option>
+            <option value="yes" class="select peer-review-select">Yes</option>
+            <option value="no" class="select peer-review-select">No</option>
+          </select>
         </div>
         <br>
         <div class="search-field">
@@ -56,12 +70,15 @@
         </div>
         <br>
       </div>
+    </form>
+    <div class="button-container">
+      <input id="search-button" type="submit" value="Search">
     </div>
-    <input id="search-button" type="submit" value="Search">
-    <!-- <div class="icon-credit">Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
   </div>
   <div class="display-results">
-    <ul id="list"></ul>
+    <ul id="list">
+      <h3>Results Display Here</h3>
+    </ul>
   </div>
   <script src="script.js"></script>
   </body>
