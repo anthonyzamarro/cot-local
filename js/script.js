@@ -1,17 +1,5 @@
-// MY QUESTIONS:
-// I keep getting an http status of 400 whenever I request /author(s)
-// I've reviewed the Swagger documentation and I'm not sure what I'm
-// getting wrong here. Is this the appropriate endpoint?
-function getAuthors() {
-  // fetch(baseUrl + 'authors')
-  //   .then(response => response.json())
-  //   .then(authors => console.log(authors))
-  //   .catch(error => console.error(error));
-}
-
-
-let searchBooksObj = {
-}
+//our search object
+let searchBooksObj = {}
 
 //the URL base with which we can concat/specify our endpoints
 let baseUrl = `http://52.11.188.162/`;
@@ -46,7 +34,8 @@ function init() {
   getTitle();
   getLicences();
   getDisciplines();
-  getAuthorsEditors();
+  // getEditors();
+  getAuthors();
   getRepositories();
 }
 
@@ -55,9 +44,6 @@ const btn = document.getElementById('search-button');
 btn.addEventListener("click", () => {
   searchBooks();
   clear();
-
-  //not working at the moment
-  getAuthors();
 });
 
 
@@ -91,26 +77,46 @@ function getTitle() {
   })
 }
 
-//so far this only populates/GETs the editors.
-//I'm having issues with /author(s). Please, see comments above
-//populates searchBooksObj's editorIds key
-function getAuthorsEditors() {
-  const editorsAuthorsList = document.querySelector('#author-name');
-  fetch(baseUrl + 'editors')
+//get author from user input and populate searchBookObj's auhthorId key
+// function getEditors() {
+//   const editorsList = document.querySelector('#author-name');
+//   fetch(baseUrl + 'editors')
+//     .then(response => response.json())
+//     .then(editors => {
+//       const lists = editors.map((i) => [i.name, i.id]);
+//       //use awesomplete js library to dynamically list editors
+//       new Awesomplete(editorsList, {
+//         list: lists,
+//         replace: function(name) {
+//           this.input.value = name.label
+//         }
+//       });
+//       //get selected editor and populate tag key in searchBookObj to POST
+//       editorsList.addEventListener("awesomplete-select", function(event) {
+//         searchBooksObj.editorIds = [event.text.value];
+//       });
+//     })
+//     .catch(error => console.error(error));
+// }
+
+function getAuthors() {
+  const authorsList = document.querySelector('#author-name');
+  fetch(baseUrl + 'authors')
     .then(response => response.json())
-    .then(editors => {
-      const lists = editors.map((i) => [i.name, i.id]);
-      //use awesomplete js library to dynamically list editors
-      new Awesomplete(editorsAuthorsList, {
+    .then(authors => {
+      const lists = authors.map((i) => [i.name, i.id]);
+      //use awesomplete js library to dynamically list authors
+      new Awesomplete(authorsList, {
         list: lists,
         replace: function(name) {
           this.input.value = name.label
         }
       });
-      //get selected editor and populate tag key in searchBookObj to POST
-      editorsAuthorsList.addEventListener("awesomplete-select", function(event) {
-        searchBooksObj.editorIds = [event.text.value];
+      //get selected author and populate tag key in searchBookObj to POST
+      authorsList.addEventListener("awesomplete-select", function(event) {
+        searchBooksObj.authorIds = [event.text.value];
       });
+
     })
     .catch(error => console.error(error));
 }
