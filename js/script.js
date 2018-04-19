@@ -1,5 +1,8 @@
 //our search object
-let searchBooksObj = {}
+let searchBooksObj = {
+  repositoryIds: [],
+  licenseCodes: []
+}
 
 //the URL base with which we can concat/specify our endpoints
 let baseUrl = `http://52.11.188.162/`;
@@ -7,7 +10,7 @@ let baseUrl = `http://52.11.188.162/`;
 //POST to /search to retrieve data
 function searchBooks() {
   //check if repositoryIds and licenseCodes have any values. If not, remove them from object
-  if (searchBooksObj.repositoryIds.length === 0) delete searchBooksObj.repositoryIds;
+  // if (searchBooksObj.repositoryIds.length === 0) delete searchBooksObj.repositoryIds;
   if (searchBooksObj.licenseCodes.length === 0) delete searchBooksObj.licenseCodes;
 
   //if object is empty, ask user to enter data to see results
@@ -73,8 +76,10 @@ function getDisciplines()  {
 function getTitle() {
   const title = document.querySelector('#title');
   title.addEventListener('change', (e) => {
-    searchBooksObj.partialTitle = e.target.value;
-  })
+    if (title.value !== '') {
+      searchBooksObj.partialTitle = e.target.value;
+    }
+  });
 }
 
 //get author from user input and populate searchBookObj's auhthorId key
@@ -148,7 +153,6 @@ function getLicences() {
 //this populates/GETs the repositories. populates searchBooksObj's repositories key
 function getRepositories() {
   const respository = document.querySelector('#repository');
-  searchBooksObj.repositoryIds = [];
   fetch(baseUrl + 'repositories')
     .then(response => response.json())
     .then(repositories => {
@@ -162,6 +166,7 @@ function getRepositories() {
       });
       repository.addEventListener("awesomplete-select", function(event) {
         searchBooksObj.repositoryIds.push(event.text.value);
+        console.log(searchBooksObj)
       });
     })
     .catch(error => console.error(error));
@@ -191,5 +196,9 @@ function buildList(searchResults) {
 //this just erases the unordered list when the user makes multiple searches.
 function clear() {
   document.getElementById('list').innerHTML = "";
+  searchBooksObj = {
+    repositoryIds: [],
+    licenseCodes: []
+  };
 };
 document.addEventListener("DOMContentLoaded", init);
